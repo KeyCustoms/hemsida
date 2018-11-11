@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Key Customs</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header-container">
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>Key Customs</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Customize</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="test.html">Feedback</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="header-text">
+      <h3>( Best of the best )</h3>
+      <p>built with quality and precision in mind</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <section id="customize-section">
+      <div id="customize-header">
+        <h1>customize</h1>
+        <p>create your own key</p>
+      </div>
+      <div id="newKey-button">
+        <h1>+</h1>
+      </div>
+      <div id="customize-area">
+        <div id="addKey-cover" onclick="remove()">
+          <div id="addKey-text">
+            <h1>+</h1>
+            <p>start customizing</p>
+          </div>
+        </div>
+        <div id="img-handling">
+          <div id="img-handling-container">
+            <div id="key-img">
+              <div id="laserprint-img">
+
+              </div>
+            </div>
+
+            <div id="img-dropzone" class="dropzone">
+              <p>Drop your photo here</p>
+            </div>
+          </div>
+
+
+          <script type="text/javascript">
+            (function(){
+              var dropzone = document.getElementById("img-dropzone");
+              var image = document.getElementById("laserprint-img");
+
+              dropzone.ondrop = function(e) {
+                e.preventDefault();
+                this.className = 'dropzone';
+                const reader = new FileReader();
+
+                reader.onload = function(){
+                  console.log(reader.result);
+                  image.style.backgroundImage = 'url(' + reader.result + ')';
+                };
+                reader.readAsDataURL(e.dataTransfer.files[0]);
+              }
+
+              dropzone.ondragover = function() {
+                this.className = 'dropzone dragover';
+                return false;
+              };
+
+              dropzone.ondragleave = function() {
+                this.className = 'dropzone';
+                return false;
+              };
+            }());
+          </script>
+
+        </div>
+        <div id="customize-varibles">
+          <select id="key-selector" name="key-selector" placeholder="Select key">
+            <option value="" disabled selected>Select key</option>
+            <option value="spacebar">spacebar</option>
+            <option value="enter">enter</option>
+            <option value="regular">regular</option>
+            <option value="backspace">backspace</option>
+          </select>
+          <select id="type-selector" name="type-selector" placeholder="Select key">
+            <option value="" disabled selected>Select key type</option>
+            <option value="func-row">Function row - 4</option>
+            <option value="num-row">Number row - 4</option>
+            <option value="tab-row">Tab row - 3</option>
+            <option value="home-row">Home row - 2</option>
+            <option value="shift-row">shift row - 1</option>
+            <option value="space-row">Spacebar row - 1</option>
+          </select>
+
+          <div id="test">
+
+          </div>
+          <input type="number" min="1" max="100" placeholder="amount">
+          <button id="addToCart-customize" type="button" name="button">Add to cart</button>
+
+        </div>
+
+      </div>
+      <iframe id="item-frame" src="item.html" width="100%" height="160" frameborder="0">
+
+      </iframe>
+    </section>
+
+
+    <section id="about-section">
+      <h1>about</h1>
+    </section>
+    <section id="feedback-section">
+      <h1>feedback</h1>
+    </section>
+  </div>
+  <script src="events.js"></script>
+
+
+
+</body>
+
+</html>
